@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>한글 놀이</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <header class="game-header">
+            <div id="score-board"></div>
+            <div class="controls">
+                <button id="char-btn" class="icon-btn" title="캐릭터 선택">🌟</button>
+                <button id="settings-btn" class="icon-btn" title="설정">⚙️</button>
+                <button id="reset-btn" class="icon-btn" title="다시하기">🔄</button>
+                <button id="next-btn" class="icon-btn" title="다음 문제">➡️</button>
+            </div>
+        </header>
+
+        <main class="game-stage">
+            <div class="question-area">
+                <div id="target-image" class="target-image"></div>
+                <div id="syllable-container" class="syllable-container"></div>
+            </div>
+        </main>
+
+        <footer class="choice-area">
+            <div id="jamo-options" class="jamo-options"></div>
+        </footer>
+
+        <div class="character-container">
+            <img id="kitty" class="kitty-img" src="assets/chars/kitty.png" alt="캐릭터">
+        </div>
+
+        <div id="overlay" class="overlay hidden">
+            <div class="message">참 잘했어요! 🎉</div>
+        </div>
+
+        <!-- Start Overlay -->
+        <div id="start-overlay" class="overlay">
+            <div class="message" style="cursor: pointer; text-align: center;">
+                <h1>한글 놀이 🐱</h1>
+                <p id="start-instructions">화면을 클릭하면 시작해요!</p>
+                <div id="start-icon" style="font-size: 4rem; margin-top: 20px;">▶️</div>
+            </div>
+        </div>
+
+        <!-- Settings Modal -->
+        <div id="settings-modal" class="overlay hidden">
+            <div class="settings-content message">
+                <h2 style="font-size: 2rem; margin-bottom: 20px;">게임 설정 ⚙️</h2>
+                <div class="setting-item"
+                    style="margin-bottom: 15px; display: flex; flex-direction: column; text-align: left;">
+                    <label style="font-weight: bold; margin-bottom: 5px;">목소리 선택</label>
+                    <select id="voice-select"
+                        style="padding: 10px; border-radius: 10px; border: 2px solid #FFB7B2; font-family: inherit; font-size: 1rem;"></select>
+                </div>
+                <div class="setting-item"
+                    style="margin-bottom: 25px; display: flex; flex-direction: column; text-align: left;">
+                    <label style="font-weight: bold; margin-bottom: 5px;">읽기 속도</label>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <input type="range" id="speed-range" min="0.5" max="1.5" step="0.1" value="0.8"
+                            style="flex: 1;">
+                        <span id="speed-value">0.8</span>
+                    </div>
+                </div>
+                <button id="test-speech-btn" class="jamo-btn"
+                    style="width:100%; height:60px; font-size:1.5rem; margin-top:20px; background: linear-gradient(135deg, #C8E6C9, #A5D6A7); border-bottom-color: #66BB6A; color: #2E7D32;">🔈
+                    소리 테스트</button>
+                <button id="close-settings" class="jamo-btn"
+                    style="width:100%; height:60px; font-size:1.5rem; margin-top:10px;">닫기</button>
+            </div>
+        </div>
+        <!-- Character Selection Modal -->
+        <div id="char-modal" class="overlay hidden">
+            <div class="settings-content message" style="width: auto; max-width: 90%;">
+                <h2 style="font-size: 2rem; margin-bottom: 20px; text-align: center;">캐릭터 선택 🌟</h2>
+                <div class="char-grid">
+                    <div class="char-card" data-char="kitty" title="키티">
+                        <img src="assets/chars/kitty.png" alt="키티">
+                    </div>
+                    <div class="char-card" data-char="melody" title="마이멜로디">
+                        <img src="assets/chars/melody.png" alt="마이멜로디">
+                    </div>
+                    <div class="char-card" data-char="purin" title="폼폼푸린">
+                        <img src="assets/chars/purin.png" alt="폼폼푸린">
+                    </div>
+                    <div class="char-card" data-char="kuromi" title="쿠로미">
+                        <img src="assets/chars/kuromi.png" alt="쿠로미">
+                    </div>
+                    <div class="char-card" data-char="cinnamoroll" title="시나모롤">
+                        <img src="assets/chars/cinnamoroll.png" alt="시나모롤">
+                    </div>
+                </div>
+                <button id="close-char-btn" class="jamo-btn"
+                    style="width:100%; height:60px; font-size:1.5rem; margin-top:20px;">닫기</button>
+            </div>
+        </div>
+    </div>
+    <script src="words.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

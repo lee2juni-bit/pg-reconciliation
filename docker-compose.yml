@@ -1,0 +1,8 @@
+services:
+  hangul-game:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./game:/usr/share/nginx/html
+    restart: always

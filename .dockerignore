@@ -1,0 +1,11 @@
+.git
+.gemini
+.agent
+node_modules
+*.md
+.DS_Store
+.env
+credentials.json
+token.json
+.tmp
+brain

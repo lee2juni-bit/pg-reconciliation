@@ -1,0 +1,18 @@
+# Intermediate files
+.tmp/
+__pycache__/
+*.pyc
+
+# Environment and Credentials
+.env
+credentials.json
+token.json
+hangul-game-repo/
+node_modules/
+.DS_Store
+.venv/
+.tmp/
+*.log
+.gemini/
+token*.json
+credentials.json
