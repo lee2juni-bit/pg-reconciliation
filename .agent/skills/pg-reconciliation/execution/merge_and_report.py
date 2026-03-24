@@ -90,6 +90,7 @@ def process_reconciliation(wev_file, pg_file, output_file):
     # PG Aggregation
     p_agg_cols = {f'_Std_{p_amt_req}': 'sum', f'_Std_{p_amt_krw}': 'sum'}
     if '거래구분' in df_p.columns: p_agg_cols['거래구분'] = 'first'
+    if 'pgRef' in df_p.columns: p_agg_cols['pgRef'] = 'first'
     
     # For 요청통화2, the user wants the literal column "요청통화2" if it exists
     p_cur_col = '요청통화2' if '요청통화2' in df_p.columns else None
@@ -108,8 +109,15 @@ def process_reconciliation(wev_file, pg_file, output_file):
     df_c = pd.merge(df_c, w_sum, on='마스터비교Key_C', how='left').fillna(0)
     df_c = pd.merge(df_c, p_sum, on='마스터비교Key_C', how='left').fillna(0)
     
+    # pgRef position (next to 마스터비교Key_C)
+    if 'pgRef' in df_c.columns:
+        cols = list(df_c.columns)
+        cols.remove('pgRef')
+        cols.insert(1, 'pgRef')
+        df_c = df_c[cols]
+    
     # Ensure categorical columns are not 0 but empty string if missing
-    for c in ['W_마감구분', 'W_결제통화', 'P_거래구분', 'P_요청통화2']:
+    for c in ['W_마감구분', 'W_결제통화', 'P_거래구분', 'P_요청통화2', 'pgRef']:
         if c in df_c.columns:
             df_c[c] = df_c[c].replace(0, '')
 

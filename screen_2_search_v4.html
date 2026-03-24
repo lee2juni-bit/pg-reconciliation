@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weverse 거래처 조회</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", dotum, sans-serif;
+            color: #333;
+        }
+
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            margin: 0;
+            display: inline-block;
+        }
+
+        .header .badge {
+            background-color: #6c757d;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .description {
+            font-size: 12px;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        .section-box {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+
+        .section-title {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .input-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .input-item label {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .input-item input,
+        .input-item select {
+            padding: 6px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 13px;
+            min-width: 150px;
+        }
+
+        .btn-search {
+            background-color: #00cc99;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        .alert-info {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin-bottom: 15px;
+            color: #0d47a1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .btn-table {
+            background-color: #0088cc;
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .rows-count {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Weverse 거래처 조회(관리자용)</h1>
+        <span class="badge">settlement (UTC+9)</span>
+        <div class="description">Jelly 정산 거래처를 조회합니다.</div>
+    </div>
+
+    <div class="section-box">
+        <div class="section-title">입력</div>
+        <div class="input-group">
+            <div class="input-item">
+                <label>거래처 ID</label>
+                <input type="text" placeholder="입력하세요">
+            </div>
+            <div class="input-item">
+                <label>BP CODE</label>
+                <input type="text" placeholder="입력하세요">
+            </div>
+            <div class="input-item">
+                <label>거래처명</label>
+                <input type="text" placeholder="입력하세요">
+            </div>
+            <div class="input-item">
+                <label>국가코드</label>
+                <select>
+                    <option>전체</option>
+                    <option>한국 [KR]</option>
+                    <option>미국 [US]</option>
+                    <option>일본 [JP]</option>
+                </select>
+            </div>
+            <div class="input-item">
+                <label>거래처 유형</label>
+                <select>
+                    <option>전체</option>
+                    <option>사업자 [CORP_T]</option>
+                    <option>개인 [INDIV]</option>
+                </select>
+            </div>
+            <button class="btn-search">조회</button>
+        </div>
+    </div>
+
+    <div class="section-box">
+        <div class="section-title">결과</div>
+        <div class="alert-info">
+            <span>ℹ️</span> 요청이 완료되었습니다. [2026-03-23 11:41:00]
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>거래처ID</th>
+                    <th>BP CODE</th>
+                    <th>거래처명</th>
+                    <th>국가코드</th>
+                    <th>거래처 유형</th>
+                    <th style="color: #d63031; background-color: #fff5f5;">정산 통화</th>
+                    <th>등록일시</th>
+                    <th>수정일시</th>
+                    <th>수정</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>4448601921</td>
+                    <td>주식회사 쓰리와이코프레이션</td>
+                    <td>KR</td>
+                    <td>사업자 [CORP_T]</td>
+                    <td style="font-weight: bold;">KRW</td>
+                    <td>2023-10-31 13:48:49</td>
+                    <td>2024-03-01 10:00:00</td>
+                    <td><button class="btn-table">수정</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>5758101157</td>
+                    <td>(주)에이잇엔터테인먼트</td>
+                    <td>KR</td>
+                    <td>사업자 [CORP_T]</td>
+                    <td style="font-weight: bold;">KRW</td>
+                    <td>2023-07-28 13:33:15</td>
+                    <td>2024-03-01 10:00:00</td>
+                    <td><button class="btn-table">수정</button></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>3498701375</td>
+                    <td>어비스컴퍼니</td>
+                    <td>KR</td>
+                    <td>사업자 [CORP_T]</td>
+                    <td style="font-weight: bold;">KRW</td>
+                    <td>2023-07-28 13:33:15</td>
+                    <td>2024-03-01 10:00:00</td>
+                    <td><button class="btn-table">수정</button></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>1150</td>
+                    <td>주식회사 이어어</td>
+                    <td>KR</td>
+                    <td>사업자 [CORP_T]</td>
+                    <td style="font-weight: bold;">USD</td>
+                    <td>2023-04-24 11:38:16</td>
+                    <td>2024-03-01 10:00:00</td>
+                    <td><button class="btn-table">수정</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="rows-count">Rows: 172</div>
+    </div>
+</body>
+
+</html>

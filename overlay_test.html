@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Overlay</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            position: relative;
+            width: 1728px;
+            /* Original image width approx */
+            height: 923px;
+            background-image: url('file:///Users/lee2juni/Downloads/정산어드민 > 거래처 조회.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        /* Hide the original area where we want to insert the column 
+           This is tricky without exact coordinates. 
+           Instead, let's just rebuild the table part.
+        */
+        .overlay-table {
+            position: absolute;
+            top: 480px;
+            /* Approximate start of table data */
+            left: 20px;
+            width: 1680px;
+            background: white;
+            z-index: 10;
+        }
+
+        /* Actually, let's just use the previous pixel-perfect HTML but make it match the original's colors better. */
+    </style>
+</head>
+
+<body>
+    <div class="container"></div>
+</body>
+
+</html>
